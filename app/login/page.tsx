@@ -1,5 +1,12 @@
 'use server';
+
+import {auth} from '@/auth';
+import {LoginButton} from '@/app/components/login/login-button';
+
 export default async function Home() {
+
+  const session = await auth();
+  console.log('Session:', session);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
@@ -8,6 +15,7 @@ export default async function Home() {
           <h1 className="text-5xl font-bold text-zinc-900 dark:text-zinc-100">
             Welcome to <span className="text-blue-600">NextAuth.js</span>
           </h1>
+          <LoginButton />
         </div>
       </main>
     </div>
